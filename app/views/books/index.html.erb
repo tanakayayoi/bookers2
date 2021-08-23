@@ -47,15 +47,21 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-        <tbody>
+        <% @books.each do |book| %>
+          <tbody>
           <tr>
-            <td>
-              <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
-            </td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
+              <td>
+                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
+              </td>
+              <td>
+                <%= book.title %>
+              </td>
+              <td>
+                <%= book.body %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
       </table>
     </div>
   </div>

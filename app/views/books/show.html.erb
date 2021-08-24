@@ -1,5 +1,5 @@
 <main>
-  <p id="notice"></p>
+  <%= render partial: 'books/flash' %>
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
@@ -41,12 +41,14 @@
               <td>
                 <%= book.body %>
               </td>
-              <td>
-                <%= link_to 'Edit', edit_book_path(@user), class: "btn btn-sm btn-success" %>
-              </td>
-              <td>
-                <a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" href="<%= book_path(@user) %>">Destroy</a>
-              </td>
+              <% if @user.id == current_user.id %>
+                <td>
+                  <%= link_to 'Edit', edit_book_path(@user), class: "btn btn-sm btn-success" %>
+                </td>
+                <td>
+                  <a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" href="<%= book_path(@user) %>">Destroy</a>
+                </td>
+              <% end %>
             </tr>
           </tbody>
           <% end %>

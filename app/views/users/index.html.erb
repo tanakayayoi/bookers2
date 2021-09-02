@@ -35,10 +35,16 @@
           <tbody>
             <tr>
               <td>
-                <%= attachment_image_tag @user, :profile_image, size: '40x40', fallback: "no_image.jpg" %>
+                <%= attachment_image_tag user, :profile_image, size: '40x40', fallback: "no_image.jpg" %>
               </td>
               <td>
                 <%= user.name %>
+              </td>
+              <td>
+                フォロワー数: <%= user.followers.count %>
+              </td>
+              <td>
+                <%= render 'relationships/follow_button', user: user %>
               </td>
               <td>
                 <%= link_to 'Show', "/users/#{user.id}" %>

@@ -18,6 +18,18 @@ class User < ApplicationRecord
     self.favorites.exists?(book_id: book.id)
   end
 
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+    following.include?(user)
+  end
+
   validates :name, {uniqueness: true, length: {in: 2..20}}
   validates :introduction, length: {maximum:50}
 

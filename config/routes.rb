@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'searchs/search'
-  get 'search/search'
   devise_for :users
   root to: 'homes#top'
   resources :books, only: [:index, :show, :create, :update, :edit, :destroy] do
